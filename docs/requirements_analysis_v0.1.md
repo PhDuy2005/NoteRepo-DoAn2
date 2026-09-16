@@ -73,7 +73,7 @@ Sinh viên UIT hiện phải tự điều phối một khối lượng công vi�
 * **Expectation from System:** Hệ thống đưa ra checklist rõ ràng từng tối: học môn gì, làm task nào, thời lượng bao nhiêu phút; tự động chia nhỏ các đồ án dài hạn.
 
 ### Persona P2 – Working / Intern Student (Sinh viên vừa học vừa làm/thực tập)
-* **Context:** Sinh viên năm 3 hoặc năm 4, đăng ký từ 12–15 tín chỉ tại UIT kết hợp thực tập hoặc làm việc bán thời gian tại doanh nghiệp công nghệ (khoảng 20–30 giờ/tuần).
+* **Context:** Sinh viên năm 3 hoặc năm 4, đăng ký từ 12–15 tín chỉ tại UIT kết hợp thực tập hoặc làm việc bán thời gian tại doanh nghiệp công nghệ (khoảng 35-40 giờ/tuần).
 * **Pain Points:**
   * Quỹ thời gian học tự do cực kỳ hạn chế và manh mún.
   * Sau ngày làm việc tại công ty thường mệt mỏi, khó tiếp thu bài vở nếu bị xếp lịch học quá dài hoặc quá muộn.
