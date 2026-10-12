@@ -24,6 +24,8 @@
   - [9. Non-Functional Requirements](#9-non-functional-requirements)
   - [10. Assumptions](#10-assumptions)
   - [11. Constraints](#11-constraints)
+  - [12. Initial Multi-Agent Responsibility Mapping](#12-initial-multi-agent-responsibility-mapping)
+  - [13. Priority](#13-priority)
 
 ## 1. Introduction
 
@@ -403,3 +405,57 @@ Kiến trúc mã nguồn phải phân tách rõ ràng giữa tầng giao diện 
 5. **Yêu cầu bắt buộc về tính ổn định khi Demo:** Hệ thống phục vụ đánh giá đồ án môn học/nghiệm thu nên phải có kịch bản chạy demo hoàn chỉnh, ổn định tuyệt đối, không được xảy ra lỗi treo hệ thống hoặc phụ thuộc vào các dịch vụ bên thứ ba khó kiểm soát.
 
 **Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 13, toàn bộ 5 constraints được duyệt theo chỉ đạo người dùng.
+
+## 12. Initial Multi-Agent Responsibility Mapping
+
+### 12.1 Bảng phân định trách nhiệm nghiệp vụ sơ bộ
+
+| Trách nhiệm nghiệp vụ | Agent đảm nhiệm | Lý do phân định |
+|---|---|---|
+| **Phân tích Năng lực & Quỹ thời gian** | **Profile Agent** | Phân tích sở thích, giới hạn thể lực, workload và giờ rảnh để đưa ra Study Budget và nhận diện quá tải. |
+| **Sinh Kế hoạch & Phân bổ Lịch** | **Planning Agent** | Tiếp nhận task và khung giờ rảnh để tạo Study Session, chia nhỏ task và soạn giải thích phân bổ. |
+| **Kiểm thử Ràng buộc & Đánh giá Phản biện** | **Review Agent** | Soát xét kế hoạch theo ràng buộc và gửi yêu cầu sửa cụ thể khi không đạt. |
+| **Điều phối Quy trình & Trọng tài** | **Orchestrator (Service Layer)** | Điều phối context flow, giới hạn vòng lặp Planning/Review và kích hoạt Deterministic Validator. |
+
+### 12.2 Tại sao dùng Multi-Agent thay vì Single-Prompt
+
+- **Phân tách trách nhiệm:** Planning tập trung vào phân bổ, còn Review tập trung vào phản biện và kiểm tra.
+- **Phản biện và tinh chỉnh lặp:** Review Agent phát hiện lỗi và gửi phản hồi có mục tiêu cho Planning Agent sửa.
+- **Quản lý context:** Chia nhỏ trách nhiệm giúp Agent nhận context phù hợp, giảm hallucination và chi phí token.
+
+### 12.3 Thành phần bắt buộc dùng Deterministic Rules
+
+- Tính toán khoảng thời gian rảnh bằng Interval Math / Time Overlap Algorithm.
+- Kiểm tra va chạm lịch bằng so sánh khoảng thời gian.
+- Kiểm tra vi phạm deadline bằng so sánh timestamp.
+- Cập nhật Remaining Effort bằng phép tính `EstimatedEffort - ActualHours`.
+
+LLM chỉ phù hợp cho suy luận ngữ cảnh mềm, phân rã task và tạo giải thích. Mọi Hard Constraint phải được bảo vệ bởi Deterministic Validator.
+
+**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 17, được duyệt theo chỉ đạo người dùng. Mục 18 trở đi vẫn là draft.
+
+## 13. Priority
+
+Bảng phân loại ưu tiên dưới đây được thiết kế để bảo đảm khả năng hiện thực hóa trong 13 tuần:
+
+| Hạng mục / Yêu cầu chức năng | Phân loại MoSCoW | Lý do đánh giá & Căn cứ khả thi |
+|---|:---:|---|
+| **FR-PROFILE-001 & 002:** Quản lý Hồ sơ & Sở thích cơ bản | **MUST** | Dữ liệu nền tảng bắt buộc cho cá nhân hóa. |
+| **FR-SCHEDULE-001 & 002:** Quản lý Lịch bận cố định & Tính slot rảnh | **MUST** | Ràng buộc cứng quan trọng nhất để xếp lịch. |
+| **FR-TASK-001, 002, 003:** Quản lý Môn học, Task, Deadline & Effort | **MUST** | Đối tượng xử lý trung tâm của bài toán lập lịch. |
+| **FR-PLAN-001, 002, 003:** Tự động sinh lịch tuần & Multi-Agent review | **MUST** | Giá trị cốt lõi của hệ thống. |
+| **FR-PLAN-004:** Cảnh báo quá tải lịch trình | **MUST** | Giúp đánh giá tính khả thi của tuần học. |
+| **FR-MODIFY-001 & 002:** Chỉnh sửa thủ công session | **MUST** | Bảo đảm quyền kiểm soát của người dùng. |
+| **FR-PROGRESS-001 & 002:** Ghi nhận tiến độ phiên học | **MUST** | Cung cấp dữ liệu để kích hoạt Re-plan. |
+| **FR-REPLAN-001:** Tái lập kế hoạch động | **MUST** | Tạo khác biệt so với ứng dụng lịch tĩnh. |
+| **FR-EXPLAIN-001:** Giải thích lý do phân bổ | **MUST** | Bảo đảm tính minh bạch của AI. |
+| **FR-SCHEDULE-003:** Đánh dấu bận đột xuất | **SHOULD** | Tiện ích bổ sung, có thể làm sau chức năng lịch lõi. |
+| **FR-TASK-004:** Quản lý trạng thái vòng đời Task | **SHOULD** | Nâng cao tính trực quan, có thể bắt đầu bằng trạng thái đơn giản. |
+| **FR-PROGRESS-003:** Tổng kết tiến độ và mức độ tuân thủ tuần | **SHOULD** | Tăng động lực và có thể xây dựng bằng phép tổng hợp. |
+| **FR-REPLAN-002:** Banner gợi ý Re-plan khi trễ hạn | **SHOULD** | Nhắc người dùng, trong khi vẫn có thể kích hoạt thủ công. |
+| **FR-EXPLAIN-002:** Tóm tắt chiến lược học tập tuần | **SHOULD** | Tăng tính chuyên nghiệp nhưng không ảnh hưởng thực thi session. |
+| **FR-PLAN-005:** Ghim khóa cố định phiên học | **COULD** | Tính năng nâng cao, có thể hoãn nếu tiến độ bị siết chặt. |
+| **Tự động trích xuất TKB từ Portal / Moodle UIT** | **WON'T** | Rủi ro kỹ thuật và phụ thuộc hệ thống bên ngoài. |
+| **Đồng bộ hai chiều với Google Calendar** | **WON'T** | Đòi hỏi OAuth và Webhook phức tạp, để dành cho giai đoạn sau. |
+
+**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 18, được duyệt theo chỉ đạo người dùng. Tiêu đề đã rút gọn thành `Priority` theo yêu cầu; mục 19 trở đi vẫn là draft.
