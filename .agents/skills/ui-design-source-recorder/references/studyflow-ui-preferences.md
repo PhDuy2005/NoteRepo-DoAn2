@@ -4,9 +4,9 @@ These are reusable preferences inferred from the StudyFlow Figma knowledge recor
 
 ## Source and confidence
 
-- Source: [`document/draft-docs/figma-ui-ux-knowledge.md`](../../../../document/draft-docs/figma-ui-ux-knowledge.md)
-- Design source recorded there: StudyFlow Figma file `84aoXZTWzvPkJu7qZerZrq`, page **MVP Wireframes**.
-- Source document last verified: 2026-10-14, as recorded in that document. Recheck the source before relying on mutable details.
+- Bundled evidence: [source and screen lookup](studyflow/index.md), [foundations](studyflow/foundations.md), [components](studyflow/components.md), and the relevant individual screen references. Read only the evidence needed for the task.
+- Editable design: [StudyFlow Figma](https://www.figma.com/design/84aoXZTWzvPkJu7qZerZrq), page **MVP Wireframes**.
+- Evidence was transcribed from a local design record carrying last-verified date **2026-10-14**. Migration did not re-inspect live Figma. Recheck mutable details before treating them as current.
 - Confidence describes how strongly the current design record supports a preference, not whether the preference has product-owner approval.
 
 ## Derived preferences
@@ -28,4 +28,4 @@ These are reusable preferences inferred from the StudyFlow Figma knowledge recor
 - The listed preferences do not authorize new functional requirements or override `document/approved-application-docs/`.
 - Suggested Vue component boundaries, exact token names, and values described as proposals are not proof of implemented frontend conventions.
 - Static frames do not establish clickable navigation, persisted state, API behavior, accessibility conformance, or responsive layouts.
-- Open decisions in the source record, including effort semantics, duration bounds, schedule stability, course weight, and manual override details, remain unresolved until authoritative project decisions settle them.
+- Open decisions documented in the relevant screen and flow references, including effort semantics, duration bounds, schedule stability, course weight, and manual override details, remain unresolved until authoritative project decisions settle them.
