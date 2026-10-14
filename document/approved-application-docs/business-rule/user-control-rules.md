@@ -20,7 +20,7 @@
 ## BR-USER-003: Xác nhận ghi đè giờ bận
 
 - **ID:** BR-USER-003
-- **Quy tắc:** Khi sinh viên cố tình kéo thả một phiên học vào một khung giờ bận cố định, hệ thống phải cảnh báo xung đột nhưng vẫn cho phép sinh viên xác nhận ghi đè nếu sinh viên chấp nhận đánh đổi lịch bận đó.
+- **Quy tắc:** AI không được tạo hoặc tự điều chỉnh phiên học trùng với khung giờ bận cố định. Khi sinh viên chủ động kéo thả phiên học vào khung giờ bận, hệ thống phải cảnh báo và chỉ ghi đè sau khi sinh viên xác nhận rõ ràng rằng họ chấp nhận đánh đổi lịch bận đó. Hệ thống phải ghi hành động ghi đè vào audit log, bao gồm người thực hiện, thời điểm, phiên học bị ảnh hưởng và khung giờ bận bị ghi đè.
 
 **Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 8.2, BR-USER-003; được duyệt.
 

@@ -15,11 +15,12 @@
 
 - **Mô tả:** Hệ thống phải cho phép sinh viên tạo, chỉnh sửa, xóa và theo dõi trạng thái các task học thuật.
 - **Tiêu chí chấp nhận:**
-  - Mỗi task bao gồm các trường bắt buộc: Tên task, Môn học liên kết, Phân loại (Assignment, Project, Quiz/Exam, Khác), Hạn chót (Deadline: ngày & giờ), Thời gian ước lượng (Estimated Effort tính bằng giờ), Mức độ ưu tiên (Thấp, Trung bình, Cao, Khẩn cấp).
+  - Mỗi task bao gồm các trường bắt buộc: Tên task, Môn học liên kết, Phân loại (Assignment, Project, Quiz/Exam, Khác), Hạn chót (Deadline: ngày & giờ), Thời gian ước lượng (Estimated Effort tính bằng giờ), Hệ số mức độ quan trọng từ 1,0 đến 5,0 theo bước 0,1.
+  - Hệ số mức độ quan trọng chỉ nhận giá trị trong khoảng 1,0–5,0 với bước tăng 0,1; giá trị cao hơn biểu thị task quan trọng hơn.
   - Deadline phải là thời gian trong tương lai tại thời điểm tạo task.
 - **Mức độ ưu tiên:** MUST.
 
-**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 9.3, FR-TASK-002; được duyệt.
+**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 9.3, FR-TASK-002; yêu cầu được duyệt. Trường mức độ quan trọng được đồng bộ theo UN-11 đã duyệt; thay thế các nhãn mức trong bản nguồn.
 
 <a id="fr-task-003"></a>
 ## FR-TASK-003 — Cập nhật và lưu vết Remaining Effort

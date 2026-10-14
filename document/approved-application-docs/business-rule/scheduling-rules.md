@@ -4,7 +4,7 @@
 ## BR-PLAN-001: Không chồng lấn khung bận
 
 - **ID:** BR-PLAN-001
-- **Quy tắc:** Một phiên học (Study Session) tuyệt đối không được chồng lấn (overlap) với bất kỳ khung thời gian nào được đánh dấu là bận cố định (Unavailable / Fixed Time Slot) của sinh viên.
+- **Quy tắc:** AI không được tạo hoặc tự điều chỉnh phiên học (Study Session) chồng lấn với bất kỳ khung thời gian nào được đánh dấu là bận cố định (Unavailable / Fixed Time Slot) của sinh viên. Ngoại lệ chỉ áp dụng khi sinh viên chủ động xác nhận ghi đè theo BR-USER-003; hành động này phải được ghi vào audit log.
 
 **Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 8.1, BR-PLAN-001; được duyệt.
 
@@ -44,9 +44,9 @@
 ## BR-PLAN-006: Thứ tự ưu tiên khi thiếu thời gian
 
 - **ID:** BR-PLAN-006
-- **Quy tắc:** Khi quỹ thời gian rảnh trong tuần không đủ để phân bổ toàn bộ các task tồn đọng, hệ thống phải ưu tiên xếp lịch theo thứ tự: Task có mức độ khẩn cấp cao hơn (Deadline gần hơn) $\rightarrow$ Task có mức ưu tiên cao hơn (Priority level) $\rightarrow$ Task có trọng số môn học cao hơn.
+- **Quy tắc:** Khi quỹ thời gian rảnh trong tuần không đủ để phân bổ toàn bộ các task tồn đọng, hệ thống phải ưu tiên xếp task theo thứ tự: deadline gần hơn trước; nếu deadline bằng nhau, task có hệ số mức độ quan trọng cao hơn (theo UN-11) được ưu tiên trước. Không dùng trọng số môn học để xếp hạng task.
 
-**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 8.1, BR-PLAN-006; được duyệt.
+**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 8.1, BR-PLAN-006; quy tắc được duyệt. Tiêu chí trọng số môn học trong bản nguồn được thay bằng hệ số mức độ quan trọng của task theo UN-11 đã duyệt.
 
 <a id="br-plan-007"></a>
 ## BR-PLAN-007: Khoảng nghỉ giữa session

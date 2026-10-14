@@ -45,10 +45,10 @@
 <a id="fr-plan-005"></a>
 ## FR-PLAN-005 — Khóa cố định phiên học (Lock/Pin Session)
 
-- **Mô tả:** Hệ thống nên cho phép sinh viên ghim cố định một phiên học trên lịch tuần để phiên học này không bị di chuyển trong các lần tái lập lịch sau.
+- **Mô tả:** Trong MVP, hệ thống phải cho phép sinh viên ghim cố định một phiên học trên lịch tuần để phiên học này không bị di chuyển trong các lần tái lập lịch sau.
 - **Tiêu chí chấp nhận:**
   - Phiên học được đánh dấu biểu tượng "Đã khóa" (Pinned).
   - Thuật toán Re-plan giữ nguyên khung giờ của phiên học đã khóa.
-- **Mức độ ưu tiên:** COULD.
+- **Mức độ ưu tiên:** MUST.
 
-**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 9.4, FR-PLAN-005; được duyệt.
+**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 9.4, FR-PLAN-005; yêu cầu được duyệt. Mức COULD trong bản nguồn được thay bằng MUST cho MVP theo quyết định người dùng ngày 2026-10-14.

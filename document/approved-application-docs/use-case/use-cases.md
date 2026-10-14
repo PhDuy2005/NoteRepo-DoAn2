@@ -53,14 +53,14 @@
 - **Main Flow:**
   1. Hệ thống hiển thị danh sách các môn học hiện có kèm mã môn và màu đại diện (nếu có).
   2. Sinh viên chọn "Thêm môn học mới".
-  3. Sinh viên nhập: Tên môn học, Mã môn (ví dụ: IT001 - Tùy chọn), Tên giảng viên (Tùy chọn), Mức độ ưu tiên/trọng số môn học (Mặc định: Bình thường).
+  3. Sinh viên nhập: Tên môn học, Mã môn (ví dụ: IT001 - Tùy chọn) và Tên giảng viên (Tùy chọn).
   4. Sinh viên nhấn "Lưu".
   5. Hệ thống lưu môn học và cập nhật danh sách hiển thị.
 - **Alternative Flow:**
   - Sinh viên chọn Sửa hoặc Xóa: Hệ thống cho phép cập nhật thông tin môn học. Nếu môn học đã có task liên kết, hệ thống yêu cầu xác nhận trước khi xóa.
 - **Postconditions:** Môn học mới được ghi nhận để liên kết với các bài tập và đồ án học thuật.
 
-**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 7, UC-03; được duyệt.
+**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 7, UC-03; được duyệt. Trường ưu tiên môn học trong bản nguồn được bỏ theo UN-11 đã duyệt; mức độ quan trọng được gán cho từng task.
 
 ## UC-04: Manage Academic Tasks
 
@@ -73,7 +73,7 @@
 - **Main Flow:**
   1. Sinh viên mở danh sách task học thuật.
   2. Sinh viên chọn "Tạo task mới".
-  3. Sinh viên nhập thông tin: Tên task, Môn học liên kết, Phân loại task (Assignment / Project / Exam Prep / Other), Hạn chót nộp bài (Deadline: Ngày & Giờ), Thời gian ước lượng cần hoàn thành (Estimated Effort - tính bằng giờ), Mức độ ưu tiên (Thấp / Trung bình / Cao / Khẩn cấp).
+  3. Sinh viên nhập thông tin: Tên task, Môn học liên kết, Phân loại task (Assignment / Project / Exam Prep / Other), Hạn chót nộp bài (Deadline: Ngày & Giờ), Thời gian ước lượng cần hoàn thành (Estimated Effort - tính bằng giờ), Hệ số mức độ quan trọng từ 1,0 đến 5,0 theo bước 0,1.
   4. Sinh viên chọn "Lưu task".
   5. Hệ thống kiểm tra dữ liệu: Deadline phải lớn hơn thời điểm hiện tại, Estimated Effort phải > 0.
   6. Hệ thống lưu task với trạng thái ban đầu là "Pending".
@@ -81,7 +81,7 @@
   - **5a. Deadline trong quá khứ hoặc Effort <= 0:** Hệ thống thông báo lỗi trường dữ liệu không hợp lệ.
 - **Postconditions:** Task được thêm vào hàng đợi công việc chờ lập lịch.
 
-**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 7, UC-04; được duyệt.
+**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 7, UC-04; được duyệt. Nhãn ưu tiên trong bản nguồn được thay bằng hệ số mức độ quan trọng theo UN-11 đã duyệt.
 
 ## UC-05: Generate Weekly Study Plan
 
@@ -142,7 +142,7 @@
   3. Hệ thống kiểm tra xem thay đổi có vi phạm các khung giờ bận cố định (Availability) hay không.
   4. Hệ thống cập nhật phiên học và hiển thị lịch mới.
 - **Alternative Flow:**
-  - **3a. Thay đổi làm phiên học trùng vào khung giờ bận cố định:** Hệ thống hiển thị cảnh báo xung đột thời gian và yêu cầu sinh viên chọn khung giờ khác.
+  - **3a. Thay đổi làm phiên học trùng vào khung giờ bận cố định:** Hệ thống hiển thị cảnh báo xung đột và cho sinh viên chọn đổi sang khung giờ khác hoặc xác nhận ghi đè nếu chấp nhận đánh đổi lịch bận. Khi sinh viên xác nhận ghi đè, hệ thống ghi nhận hành động vào audit log.
 - **Postconditions:** Kế hoạch học tập được cập nhật theo ý chí chủ quan của sinh viên.
 
 **Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 7, UC-07; được duyệt.

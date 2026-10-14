@@ -263,17 +263,17 @@ flowchart TD
 
 | ID | Nhóm | Tóm tắt | Chi tiết |
 |---|---|---|---|
-| BR-PLAN-001 | Lập lịch | Session không chồng lấn khung bận cố định. | [BR-PLAN-001](business-rule/scheduling-rules.md#br-plan-001) |
+| BR-PLAN-001 | Lập lịch | AI không xếp trùng khung bận; ngoại lệ chỉ theo xác nhận người dùng và audit. | [BR-PLAN-001](business-rule/scheduling-rules.md#br-plan-001) |
 | BR-PLAN-002 | Lập lịch | Tổng thời lượng học mỗi ngày không vượt giới hạn hồ sơ. | [BR-PLAN-002](business-rule/scheduling-rules.md#br-plan-002) |
 | BR-PLAN-003 | Lập lịch | Thời lượng session trong giới hạn tối thiểu/tối đa. | [BR-PLAN-003](business-rule/scheduling-rules.md#br-plan-003) |
 | BR-PLAN-004 | Lập lịch | Session kết thúc trước deadline của task. | [BR-PLAN-004](business-rule/scheduling-rules.md#br-plan-004) |
 | BR-PLAN-005 | Lập lịch | Task lớn được chia thành nhiều session. | [BR-PLAN-005](business-rule/scheduling-rules.md#br-plan-005) |
-| BR-PLAN-006 | Lập lịch | Ưu tiên deadline, priority, rồi trọng số môn học khi thiếu giờ. | [BR-PLAN-006](business-rule/scheduling-rules.md#br-plan-006) |
+| BR-PLAN-006 | Lập lịch | Khi thiếu giờ, ưu tiên deadline rồi hệ số quan trọng của task; không dùng trọng số môn học. | [BR-PLAN-006](business-rule/scheduling-rules.md#br-plan-006) |
 | BR-PLAN-007 | Lập lịch | Có buffer giữa session cùng ngày, trừ chỉnh sửa thủ công. | [BR-PLAN-007](business-rule/scheduling-rules.md#br-plan-007) |
 | BR-PLAN-008 | Lập lịch | Re-plan không tự di dời session trong quá khứ. | [BR-PLAN-008](business-rule/scheduling-rules.md#br-plan-008) |
 | BR-USER-001 | Quyền người dùng | Sinh viên có quyền chỉnh sửa session được sinh tự động. | [BR-USER-001](business-rule/user-control-rules.md#br-user-001) |
 | BR-USER-002 | Quyền người dùng | AI không tự sửa deadline hoặc tên task. | [BR-USER-002](business-rule/user-control-rules.md#br-user-002) |
-| BR-USER-003 | Quyền người dùng | Cảnh báo xung đột giờ bận và cho phép xác nhận ghi đè. | [BR-USER-003](business-rule/user-control-rules.md#br-user-003) |
+| BR-USER-003 | Quyền người dùng | Cảnh báo; chỉ user được xác nhận ghi đè giờ bận và hành động được audit. | [BR-USER-003](business-rule/user-control-rules.md#br-user-003) |
 | BR-USER-004 | Quyền người dùng | Session bị khóa không tự di dời khi Re-plan. | [BR-USER-004](business-rule/user-control-rules.md#br-user-004) |
 | BR-USER-005 | Quyền người dùng | Kế hoạch chỉ áp dụng sau Apply / Confirm. | [BR-USER-005](business-rule/user-control-rules.md#br-user-005) |
 | BR-PROGRESS-001 | Tiến độ | Task Completed bị loại khỏi các lần Plan / Re-plan sau. | [BR-PROGRESS-001](business-rule/progress-tracking-rules.md#br-progress-001) |
@@ -293,16 +293,16 @@ flowchart TD
 | FR-SCHEDULE-002 | Tự động tính toán quỹ thời gian rảnh | Tính và hiển thị Available Slots từ lịch bận và giờ nghỉ. | Mục 9.2 | [Chi tiết](functional-requirement/schedule-availability.md#fr-schedule-002) |
 | FR-SCHEDULE-003 | Thiết lập ngoại lệ theo ngày | Đánh dấu bận đột xuất mà không đổi lịch lặp hàng tuần. | Mục 9.2 | [Chi tiết](functional-requirement/schedule-availability.md#fr-schedule-003) |
 | FR-TASK-001 | Quản lý danh mục môn học | Thêm, sửa, xóa và hiển thị môn học trong học kỳ. | Mục 9.3 | [Chi tiết](functional-requirement/course-task-management.md#fr-task-001) |
-| FR-TASK-002 | Quản lý danh sách task học thuật | Tạo, chỉnh sửa, xóa và theo dõi task với thông tin yêu cầu. | Mục 9.3 | [Chi tiết](functional-requirement/course-task-management.md#fr-task-002) |
+| FR-TASK-002 | Quản lý danh sách task học thuật | Lưu hệ số quan trọng 1,0–5,0 theo bước 0,1 cùng thông tin task. | Mục 9.3 | [Chi tiết](functional-requirement/course-task-management.md#fr-task-002) |
 | FR-TASK-003 | Cập nhật và lưu vết Remaining Effort | Duy trì effort còn lại, khởi tạo từ estimate và giảm khi hoàn thành session. | Mục 9.3 | [Chi tiết](functional-requirement/course-task-management.md#fr-task-003) |
 | FR-TASK-004 | Phân loại trạng thái vòng đời của Task | Theo dõi Pending, In Progress, Completed và Overdue. | Mục 9.3 | [Chi tiết](functional-requirement/course-task-management.md#fr-task-004) |
 | FR-PLAN-001 | Tự động sinh kế hoạch học tập tuần | Phân bổ task tồn đọng vào slot rảnh thành Weekly Study Plan. | Mục 9.4 | [Chi tiết](functional-requirement/planning-generation.md#fr-plan-001) |
 | FR-PLAN-002 | Tự động chia nhỏ task lớn thành nhiều Study Session | Chia task lớn thành sessions trước deadline. | Mục 9.4 | [Chi tiết](functional-requirement/planning-generation.md#fr-plan-002) |
 | FR-PLAN-003 | Kiểm thử xung đột và ràng buộc | Rà soát lịch và lặp điều chỉnh tối đa 3 lần khi phát hiện vi phạm. | Mục 9.4 | [Chi tiết](functional-requirement/planning-generation.md#fr-plan-003) |
 | FR-PLAN-004 | Cảnh báo quá tải và nguy cơ trễ hạn | Cảnh báo khi effort vượt giờ rảnh và liệt kê task rủi ro. | Mục 9.4 | [Chi tiết](functional-requirement/planning-generation.md#fr-plan-004) |
-| FR-PLAN-005 | Khóa cố định phiên học | Cho phép ghim session để giữ nguyên giờ khi Re-plan. | Mục 9.4 | [Chi tiết](functional-requirement/planning-generation.md#fr-plan-005) |
+| FR-PLAN-005 | Khóa cố định phiên học | MUST trong MVP: cho phép ghim session để giữ nguyên giờ khi Re-plan. | Mục 9.4 | [Chi tiết](functional-requirement/planning-generation.md#fr-plan-005) |
 | FR-MODIFY-001 | Chỉnh sửa trực tiếp phiên học trên lịch | Đổi ngày/giờ session và cảnh báo xung đột lịch bận. | Mục 9.5 | [Chi tiết](functional-requirement/plan-modification.md#fr-modify-001) |
-| FR-MODIFY-002 | Xóa hoặc thêm mới phiên học thủ công | Thêm/xóa session và cập nhật Remaining Effort tương ứng. | Mục 9.5 | [Chi tiết](functional-requirement/plan-modification.md#fr-modify-002) |
+| FR-MODIFY-002 | Xóa hoặc thêm mới phiên học thủ công | Thêm/xóa session chỉ cập nhật kế hoạch, không làm đổi Remaining Effort. | Mục 9.5 | [Chi tiết](functional-requirement/plan-modification.md#fr-modify-002) |
 | FR-PROGRESS-001 | Ghi nhận hoàn thành phiên học | Đánh dấu Completed và giảm Remaining Effort theo thời lượng. | Mục 9.6 | [Chi tiết](functional-requirement/progress-tracking.md#fr-progress-001) |
 | FR-PROGRESS-002 | Ghi nhận tiến độ dở dang hoặc bỏ lỡ phiên học | Ghi nhận thời lượng thực tế hoặc Missed. | Mục 9.6 | [Chi tiết](functional-requirement/progress-tracking.md#fr-progress-002) |
 | FR-PROGRESS-003 | Tổng kết tiến độ tuần | Hiển thị giờ học thực tế/kế hoạch và tỷ lệ hoàn thành. | Mục 9.6 | [Chi tiết](functional-requirement/progress-tracking.md#fr-progress-003) |
@@ -322,7 +322,7 @@ flowchart TD
 | NFR-PERF-01 | Performance — Thời gian sinh kế hoạch | Hiển thị dự thảo dưới 15 giây với tối đa 10 môn, 25 task; cần benchmark API LLM. | Mục 11 |
 | NFR-PERF-02 | Performance — Thời gian phản hồi giao diện | Check-in và cập nhật tiến độ phản hồi dưới 500ms. | Mục 11 |
 | NFR-REL-01 | Reliability — Không mất mát dữ liệu kế hoạch | Tự lưu trạng thái kế hoạch và tiến độ sau mỗi thao tác. | Mục 11 |
-| NFR-AI-01 | AI Reliability — Ràng buộc cứng | Không trùng lịch bận và không xếp sau deadline, đạt 100% qua validator xác định. | Mục 11 |
+| NFR-AI-01 | AI Reliability — Ràng buộc cứng | AI không trùng lịch bận, không xếp sau deadline; đạt 100% qua validator xác định. User override được xác nhận và audit. | Mục 11 |
 | NFR-AI-02 | AI Robustness — Xử lý lỗi API | Không crash khi API lỗi; báo thân thiện và dùng fallback. | Mục 11 |
 | NFR-EXPL-01 | Explainability — Tính dễ hiểu của giải thích | Giải thích tiếng Việt tự nhiên 20–60 từ, tập trung thời gian, deadline, ưu tiên. | Mục 11 |
 | NFR-PRIV-01 | Privacy — Bảo mật dữ liệu cá nhân | Thu thập tối thiểu và khử định danh dữ liệu trước khi gửi API AI. | Mục 11 |
@@ -350,7 +350,7 @@ Hệ thống phải tự động lưu lại trạng thái kế hoạch và tiế
 
 ### NFR-AI-01 (AI Reliability — Ràng buộc cứng 100% không vi phạm)
 
-Các ràng buộc cứng (Hard Constraints) bao gồm: *Không xếp trùng vào lịch bận cố định* và *Không xếp phiên học sau deadline* phải đạt tỷ lệ tuân thủ chính xác **100%** thông qua lớp kiểm thử kiểm tra ràng buộc xác định (Deterministic Rule Validator) trước khi hiển thị cho người dùng.
+Các kế hoạch do AI tạo hoặc tự điều chỉnh phải tuân thủ 100% các ràng buộc cứng: *không xếp trùng vào lịch bận cố định* và *không xếp phiên học sau deadline*. Deterministic Rule Validator phải kiểm tra các ràng buộc này trước khi kế hoạch được hiển thị cho người dùng. AI không được tự tạo ngoại lệ cho lịch bận. Sinh viên có thể chủ động ghi đè xung đột lịch bận theo BR-USER-003 sau cảnh báo và xác nhận rõ ràng; hành động ghi đè phải được ghi vào audit log và được phân biệt với kết quả do AI tạo.
 
 ### NFR-AI-02 (AI Robustness — Xử lý lỗi API)
 
@@ -454,8 +454,8 @@ Bảng phân loại ưu tiên dưới đây được thiết kế để bảo đ
 | **FR-PROGRESS-003:** Tổng kết tiến độ và mức độ tuân thủ tuần | **SHOULD** | Tăng động lực và có thể xây dựng bằng phép tổng hợp. |
 | **FR-REPLAN-002:** Banner gợi ý Re-plan khi trễ hạn | **SHOULD** | Nhắc người dùng, trong khi vẫn có thể kích hoạt thủ công. |
 | **FR-EXPLAIN-002:** Tóm tắt chiến lược học tập tuần | **SHOULD** | Tăng tính chuyên nghiệp nhưng không ảnh hưởng thực thi session. |
-| **FR-PLAN-005:** Ghim khóa cố định phiên học | **COULD** | Tính năng nâng cao, có thể hoãn nếu tiến độ bị siết chặt. |
+| **FR-PLAN-005:** Ghim khóa cố định phiên học | **MUST** | Thuộc MVP; Re-plan phải giữ nguyên khung giờ các session người dùng đã ghim. |
 | **Tự động trích xuất TKB từ Portal / Moodle UIT** | **WON'T** | Rủi ro kỹ thuật và phụ thuộc hệ thống bên ngoài. |
 | **Đồng bộ hai chiều với Google Calendar** | **WON'T** | Đòi hỏi OAuth và Webhook phức tạp, để dành cho giai đoạn sau. |
 
-**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 18, được duyệt theo chỉ đạo người dùng. Tiêu đề đã rút gọn thành `Priority` theo yêu cầu; mục 19 trở đi vẫn là draft.
+**Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 18; FR-PLAN-005 được nâng từ COULD lên MUST theo quyết định người dùng ngày 2026-10-14. Tiêu đề đã rút gọn thành `Priority` theo yêu cầu; mục 19 trở đi vẫn là draft.

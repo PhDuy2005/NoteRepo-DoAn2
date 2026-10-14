@@ -16,8 +16,8 @@
 
 - **Mô tả:** Hệ thống phải cho phép sinh viên tự do xóa một phiên học do hệ thống gợi ý hoặc tạo thêm một phiên học thủ công cho một task bất kỳ.
 - **Tiêu chí chấp nhận:**
-  - Xóa session: Khối lượng thời gian tương ứng được hoàn trả lại vào Remaining Effort của task.
-  - Thêm session: Thời lượng session được khấu trừ vào Remaining Effort của task.
+  - Thêm hoặc xóa session chỉ cập nhật kế hoạch học; không làm thay đổi Remaining Effort của task.
+  - Remaining Effort chỉ giảm theo thời lượng thực tế đã học được ghi nhận qua các trạng thái hoàn thành hoặc hoàn thành một phần; session bị bỏ lỡ không làm giảm Remaining Effort.
 - **Mức độ ưu tiên:** MUST.
 
 **Nguồn và trạng thái:** `docs/requirements_analysis_v0.1.md`, mục 9.5, FR-MODIFY-002; được duyệt.
